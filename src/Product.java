@@ -31,7 +31,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Куплен товар ='" + name  +
+        return "товар ='" + name  +
                 ", по цене =" + price +
                 ", в количестве =" + count + "\n";
     }
@@ -79,6 +79,7 @@ public class Product {
 
     public void setPrice(float price) {
         this.price = price;
+        ProductMethod.addPrice(price);
     }
 
     public void setCount(float count) {
