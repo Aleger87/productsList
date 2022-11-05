@@ -1,4 +1,4 @@
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,8 +25,18 @@ public class Main {
 
 
         //System.out.println(recipe.toString());
-        System.out.println(RecipeList.recipes.toString());
+        //System.out.println(RecipeList.recipes.toString());
 
+
+
+        //task3
+        ArrayList<Integer> list = new ArrayList<>();
+        while (list.size() < 20) {
+            list.add((int) (Math.random() * (1000 - 1) + 1));
+        }
+        System.out.println(list.toString());
+        list.removeIf(integer -> integer % 2 == 0);
+        System.out.println(list.toString());
 
     }
 
