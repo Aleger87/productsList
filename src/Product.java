@@ -7,11 +7,13 @@ public class Product {
     private String name;
     private float price;
     private float count;
+    private float sum = 0;
 
     public Product(String name, float price, float count) {
         setName(name);
         setPrice(price);
         setCount(count);
+        sum = price * count;
         ProductMethod.addNewProduct(this);
 
     }
@@ -31,9 +33,10 @@ public class Product {
 
     @Override
     public String toString() {
-        return "товар ='" + name  +
+        return "продукт ='" + name  +
                 ", по цене =" + price +
-                ", в количестве =" + count + "\n";
+                ", в количестве =" + count +
+                ", на сумму = " + sum;
     }
 
     private boolean checkCorrectName(String name) {
@@ -50,6 +53,9 @@ public class Product {
 
     }
 
+    public float getSum() {
+        return sum;
+    }
 
     public String getName() {
         return name;
@@ -83,6 +89,9 @@ public class Product {
     }
 
     public void setCount(float count) {
+        if (count <= 0) {
+            count = 1;
+        }
         this.count = count;
     }
 

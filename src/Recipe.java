@@ -1,14 +1,13 @@
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Recipe {
-    private Set<Product> productsList = new HashSet<>();
+    private Map<Product, Float> productsList = new HashMap<>();
     private float totalCost;
     private String recipeName;
 
-    public Recipe(float totalCost, String recipeName, Product product ) {
-        this.totalCost = totalCost;
+
+
+    public Recipe(String recipeName, Product product) {
         this.recipeName = recipeName;
         addProduct(product);
         RecipeList.addRecipe(this);
@@ -16,14 +15,18 @@ public class Recipe {
     }
 
     public void addProduct(Product product) {
-        productsList.add(product);
+        if (!productsList.containsKey(product)) {
+            productsList.put(product, (float) product.getCount());
+            totalCost = getTotalCost()+ product.getSum();
+        }
+
     }
 
     @Override
     public String toString() {
         return "Название блюда = " + recipeName +
                 "\nПродуктовый лист = " + productsList +
-                "\nОбщая стоимость = " + totalCost +"\n\n";
+                "\nНа сумму = " + getTotalCost() + "\n\n";
     }
 
     @Override
@@ -34,11 +37,10 @@ public class Recipe {
         return Float.compare(recipe.totalCost, totalCost) == 0 && Objects.equals(recipeName, recipe.recipeName);
     }
 
-/*    @Override
+    @Override
     public int hashCode() {
         return Objects.hash(totalCost, recipeName);
-    }*/
-
+    }
 
 
     public float getTotalCost() {
