@@ -1,15 +1,15 @@
-import java.util.HashSet;
-import java.util.Set;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class RecipeList {
-    public static Set<Recipe> recipes = new HashSet<>();
+    public static Map<String, Recipe> recipes = new HashMap<>();
 
     public static void addRecipe(Recipe recipe) {
-        for (var r: recipes) {
-            if (recipe.getRecipeName().equals(r.getRecipeName())) {
-                throw new RuntimeException("Рецепт " + recipe.getRecipeName() +" уже есть");
-            }
+        if (recipes.containsKey(recipe.getRecipeName())) {
+            throw new RuntimeException("Рецепт " + recipe.getRecipeName() +" уже есть");
         }
-        recipes.add(recipe);
+        recipes.put(recipe.getRecipeName(), recipe);
     }
 }
