@@ -52,7 +52,7 @@ public class Main {
 
         //task 2.1
 
-        int a = 1;
+        /*int a = 1;
         int b = 1000;
         int count = 0;
 
@@ -68,8 +68,23 @@ public class Main {
         for (var key: mapList.keySet()) {
             newMapList.put(key, sum(mapList.get(key)));
         }
-        System.out.println(newMapList);
+        System.out.println(newMapList);*/
 
+        //task 2.2
+        Map<Integer, String> map = new HashMap<>();
+        int count = 10;
+        while (map.size() < count) {
+            map.put(map.size(), "map" + map.size());
+        }
+        for (var k : map.keySet()) {
+            printMap(k, map.get(k));
+        }
+
+    }
+
+
+    public static void printMap(int key, String str) {
+        System.out.println(key + ":" + str);
     }
 
     private static Integer sum(List<Integer> integers) {
