@@ -40,9 +40,27 @@ public class Main {
         list.removeIf(integer -> integer % 2 == 0);
         System.out.println(list.toString());*/
 
+        //task3(map)
+        Map<String, Integer> list = new HashMap<>();
+        String key = "Key";
+        int number = 1;
+        addDataInMap(list, key, number);
+        String key1 = "Key";
+        int number1 = 2;
+        addDataInMap(list, key1, number1);
+        System.out.println(list);
+
     }
 
-
+    private static Map<String, Integer> addDataInMap(Map<String, Integer> mapList, String str, int i) {
+        if (!mapList.containsKey(str)) {
+            mapList.put(str, i);
+        } else {
+            mapList.remove(str);
+            mapList.put(str, i);
+        }
+        return mapList;
+    }
 
 
 }
