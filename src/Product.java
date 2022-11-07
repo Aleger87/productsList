@@ -7,13 +7,13 @@ public class Product {
     private String name;
     private float price;
     private float count;
-    private float sum = 0;
+    private float summ;
 
     public Product(String name, float price, float count) {
         setName(name);
         setPrice(price);
         setCount(count);
-        sum = price * count;
+        summ = summ + price * count;
         ProductMethod.addNewProduct(this);
 
     }
@@ -36,7 +36,7 @@ public class Product {
         return "продукт ='" + name  +
                 ", по цене =" + price +
                 ", в количестве =" + count +
-                ", на сумму = " + sum;
+                ", на сумму = " + summ;
     }
 
     private boolean checkCorrectName(String name) {
@@ -53,9 +53,10 @@ public class Product {
 
     }
 
-    public float getSum() {
-        return sum;
+    public float getSumm() {
+        return summ;
     }
+
 
     public String getName() {
         return name;
@@ -72,7 +73,7 @@ public class Product {
 
     public void setName(String name) {
         if (name == null && name.isEmpty() && name.isBlank()) {
-            throw new RuntimeException("Необходимо указать имя");
+            throw new RuntimeException("Необходимо указать название");
         }
         if (!checkCorrectName(name)) {
             throw new RuntimeException("Имя "+name+" должно быть на русском языке");
@@ -85,7 +86,6 @@ public class Product {
 
     public void setPrice(float price) {
         this.price = price;
-        ProductMethod.addPrice(price);
     }
 
     public void setCount(float count) {

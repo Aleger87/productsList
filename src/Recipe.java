@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class Recipe {
-    private Map<Product, Float> productsList = new HashMap<>();
+    private Map<String, Float> productsList = new HashMap<>();
     private float totalCost;
-    private String recipeName;
+    private final String recipeName;
 
 
 
@@ -15,18 +15,19 @@ public class Recipe {
     }
 
     public void addProduct(Product product) {
-        if (!productsList.containsKey(product)) {
-            productsList.put(product, (float) product.getCount());
-            totalCost = getTotalCost()+ product.getSum();
+
+        if (!productsList.containsKey(product.getName())) {
+            productsList.put(product.getName(), (float) product.getCount());
+            totalCost = getTotalCost() + product.getSumm();
         }
 
     }
 
     @Override
     public String toString() {
-        return "Название блюда = " + recipeName +
+        return  "название блюда" +
                 "\nПродуктовый лист = " + productsList +
-                "\nНа сумму = " + getTotalCost() + "\n\n";
+                "\nНа сумму = " + totalCost;
     }
 
     @Override
@@ -42,6 +43,10 @@ public class Recipe {
         return Objects.hash(totalCost, recipeName);
     }
 
+
+    public Map<String, Float> getProductsList() {
+        return productsList;
+    }
 
     public float getTotalCost() {
         return totalCost;
