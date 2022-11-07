@@ -8,7 +8,7 @@ public class ProductMethod {
         for (int i = 0; i < correctList.size(); i++) {
             if (correctList.contains(name)) {
                 try {
-                    throw new ProductException("Имя"+ name +"уже есть в списке");
+                    throw new ProductException("Имя"+ name +"уже есть в списке ");
                 } catch (ProductException e) {
                     System.out.println(e.getMessage());
                 }
