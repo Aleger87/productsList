@@ -1,9 +1,10 @@
 import java.util.*;
 
+
 public class Recipe {
     private Map<Product, Float> productsList = new HashMap<>();
     private float totalCost;
-    private String recipeName;
+    private final String recipeName;
 
 
 
@@ -15,18 +16,21 @@ public class Recipe {
     }
 
     public void addProduct(Product product) {
-        if (!productsList.containsKey(product)) {
-            productsList.put(product, (float) product.getCount());
-            totalCost = getTotalCost()+ product.getSum();
-        }
+        productsList.put(product, (float) product.getCount());
+    }
 
+    public float getTotalSum() {
+        for (var sum : productsList.keySet()) {
+            totalCost += sum.getSumm();
+        }
+        return totalCost;
     }
 
     @Override
     public String toString() {
-        return "Название блюда = " + recipeName +
+        return  "название блюда" +
                 "\nПродуктовый лист = " + productsList +
-                "\nНа сумму = " + getTotalCost() + "\n\n";
+                "\nНа сумму = " + totalCost;
     }
 
     @Override
@@ -34,17 +38,16 @@ public class Recipe {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Recipe recipe = (Recipe) o;
-        return Float.compare(recipe.totalCost, totalCost) == 0 && Objects.equals(recipeName, recipe.recipeName);
+        return Float.compare(recipe.totalCost, totalCost) == 0 && Objects.equals(productsList, recipe.productsList) && Objects.equals(recipeName, recipe.recipeName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(totalCost, recipeName);
+        return Objects.hash(productsList, totalCost, recipeName);
     }
 
-
-    public float getTotalCost() {
-        return totalCost;
+    public Map<Product, Float> getProductsList() {
+        return productsList;
     }
 
     public String getRecipeName() {
