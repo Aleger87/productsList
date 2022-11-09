@@ -23,12 +23,12 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Float.compare(product.price, price) == 0 && Float.compare(product.count, count) == 0 && Objects.equals(name, product.name);
+        return Float.compare(product.price, price) == 0 && Float.compare(product.count, count) == 0 && Float.compare(product.summ, summ) == 0 && Objects.equals(name, product.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, price, count);
+        return Objects.hash(name, price, count, summ);
     }
 
     @Override

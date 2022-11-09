@@ -25,16 +25,16 @@ public class Main {
 
         System.out.println("Название блюда " + recipe.getRecipeName());
         System.out.println("Продуктовый лист "+recipe.getProductsList());
-        System.out.println("На сумму " +recipe.getTotalCost());
+        System.out.println("На сумму " +recipe.getTotalSum());
 
 
         //task 1.3(map)
         Map<String, Integer> list2 = new HashMap<>();
-        String key0 = "Key";
+        String key0 = "str2";
         int number = 1;
         addDataInMap(list2, key0, number);
-        String key1 = "Key1";
-        int number1 = 12;
+        String key1 = "str1";
+        int number1 = 5;
         addDataInMap(list2, key1, number1);
         System.out.println(list2);
 
@@ -124,11 +124,10 @@ public class Main {
 
 
     private static Map<String, Integer> addDataInMap(Map<String, Integer> mapList, String str, int i) {
-        if (!mapList.containsKey(str) || !mapList.containsValue(i)) {
-            mapList.put(str, i);
-        } else {
-            throw new RuntimeException("Ключ и значение совпадают");
-        }
+        if (mapList.containsKey(str) && mapList.get(str).equals(i)){
+                throw new RuntimeException("Ключ и значение совпадают");
+            }
+        mapList.put(str, i);
         return mapList;
     }
 
